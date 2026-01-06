@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Space Chart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <style>
+        /* About Me Page Styles */
+        .about-main {
+            padding: 5rem 1.5rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .page-title {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #00f3ff, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        .page-subtitle {
+            color: #a0aec0;
+            font-size: 1.2rem;
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .profile-card {
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+        }
+        
+        .profile-header {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(0, 243, 255, 0.1) 0%,
+                rgba(0, 102, 255, 0.1) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .profile-avatar {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #00f3ff;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+        }
+        
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-name {
+            font-size: 2.2rem;
+            color: #00f3ff;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .profile-title {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .profile-university {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        /* --- เริ่มแก้ไขส่วนเนื้อหาใหม่ --- */
+        .profile-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* จัดกึ่งกลาง */
+        }
+        
+        /* แก้ไข Grid ให้ใช้ column เดียวเพื่อจัดกึ่งกลาง */
+        .info-container {
+            width: 100%;
+            max-width: 600px; /* จำกัดความกว้างสูงสุด */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .basic-info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .basic-info-card:hover {
+            border-color: #00f3ff;
+            background: rgba(0, 243, 255, 0.05);
+        }
+        
+        .basic-info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.3);
+        }
+        
+        .basic-info-card-header i {
+            font-size: 1.5rem;
+            color: #00f3ff;
+        }
+        
+        .basic-info-card-header h3 {
+            font-size: 1.3rem;
+            color: #00f3ff;
+            font-weight: 600;
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+        }
+        
+        .basic-info-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .basic-info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .basic-info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .basic-info-label {
+            color: #a0aec0;
+            font-weight: 500;
+            min-width: 120px;
+            font-family: 'Kanit', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .basic-info-value {
+            color: #ffffff;
+            flex: 1;
+            font-family: 'Kanit', sans-serif;
+            font-size: 1rem;
+        }
+        
+        /* อีเมลแบบพิเศษ */
+        .email-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+        }
+        
+        .email-icon {
+            font-size: 1.5rem;
+            color: #00f3ff;
+        }
+        
+        .email-content h4 {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .email-content p {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .profile-footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            width: 100%;
+        }
+        
+        .footer-signature {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 200px;
+            margin: 0 auto;
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-main {
+                padding: 6rem 1rem 2rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .profile-header {
+                padding: 2rem 1rem;
+            }
+            
+            .profile-avatar {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .profile-name {
+                font-size: 1.8rem;
+            }
+            
+            .profile-content {
+                padding: 1.5rem 1rem;
+            }
+            
+            .basic-info-card {
+                padding: 1.5rem;
+            }
+            
+            .basic-info-label {
+                min-width: 100px;
+            }
+            
+            .info-container {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .profile-name {
+                font-size: 1.5rem;
+            }
+            
+            .profile-title {
+                font-size: 1.1rem;
+            }
+            
+            .basic-info-card-header h3 {
+                font-size: 1.1rem;
+            }
+            
+            .basic-info-label {
+                min-width: 90px;
+                font-size: 0.9rem;
+            }
+            
+            .basic-info-value {
+                font-size: 0.95rem;
+            }
+        }
+        /* --- จบส่วนแก้ไข --- */
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="starfield"></div>
+    
+    <nav class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__logo">
+                <i class="fas fa-rocket"></i>
+                <span>SPACE CHART</span>
+            </div>
+            <button class="navbar__toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar__menu">
+                <li class="navbar__item active">
+                    <a href="index.html" class="navbar__link">
+                        <i class="fas fa-home"></i> หน้าแรก
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Wtop10-songsTH.html" class="navbar__link">
+                        <i class="fas fa-music"></i> Weekly Top 10 TH
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Wtop10-songsGB.html" class="navbar__link">
+                        <i class="fas fa-globe"></i> Weekly Top 10 GB
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Dtop10-songsTH.html" class="navbar__link">
+                        <i class="fas fa-calendar-day"></i> Daily Top 10 TH
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Dtop10-songsGB.html" class="navbar__link">
+                        <i class="fas fa-calendar-alt"></i> Daily Top 10 Global
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Wtop3-AlbumsTH.html" class="navbar__link">
+                        <i class="fas fa-compact-disc"></i> Top Artists Global
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="aboutMe.html" class="navbar__link">
+                        <i class="fas fa-user-astronaut"></i> About Me
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="about-main">
+        <div class="page-header">
+            <h1 class="page-title">ABOUT ME</h1>
+            <p class="page-subtitle">ข้อมูลพื้นฐานเกี่ยวกับตัวฉัน</p>
+        </div>
+        
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="cover/aboutme.jpg" 
+                         alt="Profile Picture">
+                </div>
+                
+                <h2 class="profile-name">แนะนำตัว</h2>
+            </div>
+            
+            <!-- แก้ไขส่วนเนื้อหาตรงนี้ -->
+            <div class="profile-content">
+                <div class="info-container">
+                    <div class="basic-info-card">
+                        <div class="basic-info-card-header">
+                            <i class="fas fa-id-card"></i>
+                            <h3>ข้อมูลส่วนตัว</h3>
+                        </div>
+                        <div class="basic-info-body">
+                            <div class="basic-info-row">
+                                <span class="basic-info-label">ชื่อ - นามสกุล:</span>
+                                <span class="basic-info-value">นายธนภัทร วิชชากูล</span>
+                            </div>
+                            <div class="basic-info-row">
+                                <span class="basic-info-label">รหัสนิสิต:</span>
+                                <span class="basic-info-value">67312533</span>
+                            </div>
+                            <div class="basic-info-row">
+                                <span class="basic-info-label">มหาวิทยาลัย:</span>
+                                <span class="basic-info-value">มหาวิทยาลัยนเรศวร</span>
+                            </div>
+                            <div class="basic-info-row">
+                                <span class="basic-info-label">คณะ:</span>
+                                <span class="basic-info-value">วิทยาศาสตร์</span>
+                            </div>
+                            <div class="basic-info-row">
+                                <span class="basic-info-label">สาขา:</span>
+                                <span class="basic-info-value">เทคโนโลยีสารสนเทศ</span>
+                            </div>
+                            
+                            <!-- อีเมลติดต่อ -->
+                            <div class="basic-info-row" style="flex-direction: column; align-items: flex-start; border-top: 1px solid rgba(0, 243, 255, 0.1); padding-top: 1rem; margin-top: 0.5rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
+                                    <i class="fas fa-envelope" style="color: #00f3ff; font-size: 1.5rem;"></i>
+                                    <div>
+                                        <div style="color: #a0aec0; font-size: 0.9rem; font-family: 'Kanit', sans-serif; margin-bottom: 0.3rem;">
+                                            อีเมลติดต่อ
+                                        </div>
+                                        <div style="color: #ffffff; font-size: 1.1rem; font-family: 'Orbitron', sans-serif;">
+                                            thanaphatw67@nu.ac.th
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- จบส่วนเนื้อหา -->
+            
+            <div class="profile-footer">
+                <div class="footer-signature">
+                    <span>Space Chart Developer</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div class="audio-player" id="audioPlayer">
+        <div class="audio-player__container">
+            <div class="audio-player__info">
+                <div class="audio-player__cover">
+                    <img id="playerCover" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop&crop=center" alt="Cover">
+                </div>
+                <div class="audio-player__details">
+                    <h4 id="playerTitle">เลือกเพลงเพื่อเล่น</h4>
+                    <p id="playerArtist">Space Chart</p>
+                </div>
+            </div>
+            
+            <div class="audio-player__controls">
+                <button class="player-btn" id="prevBtn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="player-btn player-btn--play" id="playBtn">
+                    <i class="fas fa-play" id="playIcon"></i>
+                </button>
+                <button class="player-btn" id="nextBtn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            
+            <div class="audio-player__progress">
+                <span id="currentTime">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress-bar__fill" id="progressFill"></div>
+                    <input type="range" class="progress-bar__input" id="progressSlider" min="0" max="100" value="0">
+                </div>
+                <span id="durationTime">0:00</span>
+            </div>
+            
+            <div class="audio-player__volume">
+                <button class="volume-btn" id="volumeBtn">
+                    <i class="fas fa-volume-up" id="volumeIcon"></i>
+                </button>
+                <div class="volume-slider">
+                    <div class="volume-slider__fill" id="volumeFill"></div>
+                    <input type="range" class="volume-slider__input" id="volumeSlider" min="0" max="100" value="80">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__logo">
+                <i class="fas fa-rocket"></i>
+                <span>SPACE CHART</span>
+            </div>
+            <p class="footer__desc">ชาร์ตเพลงอันดับ 1 ในธีมอวกาศสุดล้ำ • อัปเดตทุกวัน</p>
+            <div class="footer__social">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer__copyright">&copy; 2023 Space Chart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
