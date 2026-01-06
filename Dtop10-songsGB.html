@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Top 10 Songs Global | Space Chart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="starfield"></div>
+    
+    <nav class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__logo">
+                <i class="fas fa-rocket"></i>
+                <span>SPACE CHART</span>
+            </div>
+            <button class="navbar__toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar__menu">
+                <li class="navbar__item active">
+                    <a href="index.html" class="navbar__link">
+                        <i class="fas fa-home"></i> หน้าแรก
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Wtop10-songsTH.html" class="navbar__link">
+                        <i class="fas fa-music"></i> Weekly Top 10 TH
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Wtop10-songsGB.html" class="navbar__link">
+                        <i class="fas fa-globe"></i> Weekly Top 10 GB
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Dtop10-songsTH.html" class="navbar__link">
+                        <i class="fas fa-calendar-day"></i> Daily Top 10 TH
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Dtop10-songsGB.html" class="navbar__link">
+                        <i class="fas fa-calendar-alt"></i> Daily Top 10 Global
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Wtop3-AlbumsTH.html" class="navbar__link">
+                        <i class="fas fa-compact-disc"></i> Top Artists Global
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="aboutMe.html" class="navbar__link">
+                        <i class="fas fa-user-astronaut"></i> About Me
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <!-- เพิ่ม page-meta ใน HTML -->
+        <div class="page-header">
+            <h1 class="page-title">Daily Top 10 Songs Global</h1>
+            <p class="page-subtitle">ชาร์ตเพลงสากลยอดนิยมประจำวัน</p>
+        </div>
+        
+        <div class="page-meta">
+            <div class="meta-info">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>ข้อมูล ณ วันที่: 29 ธันวาคม 2025</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>อัปเดตล่าสุด: 31 ธันวาคม 2025, 19:30 น.</span>
+                </div>
+            </div>
+            <a href="https://charts.spotify.com/charts/view/regional-global-daily/latest" 
+               target="_blank" 
+               class="source-link">
+                <i class="fas fa-external-link-alt"></i>
+                <span>อ้างอิงจาก: charts.spotify.com</span>
+            </a>
+        </div>
+        
+        <!-- Content will be loaded by main.js -->
+         <center>หมายเหตุ: อาจพบความล่าช้า (Latency) ในการโหลดไฟล์เสียง เนื่องจากเป็นการดึงข้อมูลจาก Static Hosting (GitHub Pages)</center>
+        <br>    
+    </main>
+    
+    <div class="audio-player" id="audioPlayer">
+        <div class="audio-player__container">
+            <div class="audio-player__info">
+                <div class="audio-player__cover">
+                    <img id="playerCover" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop&crop=center" alt="Cover">
+                </div>
+                <div class="audio-player__details">
+                    <h4 id="playerTitle">เลือกเพลงเพื่อเล่น</h4>
+                    <p id="playerArtist">Space Chart</p>
+                </div>
+            </div>
+            
+            <div class="audio-player__controls">
+                <button class="player-btn" id="prevBtn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="player-btn player-btn--play" id="playBtn">
+                    <i class="fas fa-play" id="playIcon"></i>
+                </button>
+                <button class="player-btn" id="nextBtn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            
+            <div class="audio-player__progress">
+                <span id="currentTime">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress-bar__fill" id="progressFill"></div>
+                    <input type="range" class="progress-bar__input" id="progressSlider" min="0" max="100" value="0">
+                </div>
+                <span id="durationTime">0:00</span>
+            </div>
+            
+            <div class="audio-player__volume">
+                <button class="volume-btn" id="volumeBtn">
+                    <i class="fas fa-volume-up" id="volumeIcon"></i>
+                </button>
+                <div class="volume-slider">
+                    <div class="volume-slider__fill" id="volumeFill"></div>
+                    <input type="range" class="volume-slider__input" id="volumeSlider" min="0" max="100" value="80">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__logo">
+                <i class="fas fa-rocket"></i>
+                <span>SPACE CHART</span>
+            </div>
+            <p class="footer__desc">ชาร์ตเพลงอันดับ 1 ในธีมอวกาศสุดล้ำ • อัปเดตทุกวัน</p>
+            <div class="footer__social">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer__copyright">&copy; 2023 Space Chart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
